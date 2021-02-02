@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if (_currentState == GameStates.race)
         {
             MovePlayer();
-            // MovePP2();
+           
         }
         else if (_currentState == GameStates.raceFinished)
         {
@@ -149,27 +149,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void MovePP2()
-    {
-        Vector3 pos = transform.position + new Vector3(_horizontalMov * _rightSpeedMul, 0, _verticalMove * _forwardSpeedMul);
 
-        // to prevent player getting outside of the platform
-        if (_platformBonds.Contains(pos))
-        {
-            _rb.MovePosition(pos);
-            // rotate player body to direction of movement
-            _playerBody.SetCharacterRotation();
-        }
-        else
-        {
-            // move just forward
-            _rb.MovePosition(transform.position + new Vector3(0, 0, _verticalMove * _forwardSpeedMul));
-
-            // // do not allow player to turn more when he/she reach bounds of platform
-            _horizontalMov = 0;
-            _playerBody.SetCharacterRotation();
-        }
-    }
 
 
     private void OnTriggerEnter(Collider other)
